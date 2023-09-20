@@ -1,0 +1,19 @@
+ import React from "react";
+ import Typewriter from "typewriter-effect";
+
+ export function Type ()
+ {
+    return (
+        <Typewriter
+            options={{
+                strings: [
+                    'Desinnateur',
+                    'Designeur'
+                ],
+                autoStart: true,
+                loop: true,
+                deleteSpeed: 50,
+            }}
+        />
+    )
+ }
