@@ -1,27 +1,29 @@
 import React from 'react';
 import { SocialIcon } from 'react-social-icons';
 import { Type } from './typeEffect';
-import profile from './profile.png';
+import mk1 from './mk1.png';
 
 export function Home ()
 {
 
     return (
-        <section class="featured-box" id="home">
+        
+            <div className='wrapper'>
+            <section class="featured-box" id="home">
         <div class="featured-text">
             <div class="featured-text-card">
-                <span>Moise Kafeka</span>
+                <span>Moïse Kafeka</span>
             </div>
             <div class="featured-name">
                 <p>Je suis <span class="typedText"> <Type/> </span></p>
             </div>
             <div class="featured-text-info">
-                <p> J'ai de l'experience dans le dessin à crayon depuis maintenant 5 ans ....
-                </p>
+                <p> J'ai de l'experience dans le dessin à crayon et numérique depuis maintenant 5 ans.</p>
+                <p> Ma spécialité étant le portrait je m'entraine du jour le jour pour toujours me surpasser et satisfaire mes clients</p>
             </div>
             <div class="featured-text-btn">
-                <button class="btn blue-btn">Hire Me</button>
-                <button class="btn">Download CV <i class="uil uil-file-alt"></i></button>
+                <button class="btn blue-btn">Louer mes services</button>
+                <button class="btn">Télécharger le CV <i class="uil uil-file-alt"></i></button>
             </div>
             <div class="social_icons">
                 <div className='icon'> <SocialIcon 
@@ -52,16 +54,11 @@ export function Home ()
         </div>
         <div class="featured-image">
             <div class="image">
-                <img src= {profile} alt="avatar"/>
+                <img src= {mk1} alt="avatar"/>
             </div>
-        </div>
-        <div class="scroll-icon-box">
-            <a href="#about" class="scroll-btn">
-                <i class="uil uil-mouse-alt"></i>
-                <p>Scroll Down</p>
-            </a>
         </div>
 
     </section>
+            </div>
     )
 }

@@ -8,7 +8,7 @@
             options={{
                 strings: [
                     'Desinnateur',
-                    'Designeur'
+                    'Portraitiste'
                 ],
                 autoStart: true,
                 loop: true,

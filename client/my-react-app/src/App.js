@@ -11,19 +11,22 @@ import "./style.css";
 import { Shared } from './component/routing';
 
 function App() {
-  return ( 
-    <Router>
-        <NavBar/>
-        <Routes>
-            <Route path='/' element = {<Shared/>}>
-                <Route index element = {<Home/>}/>
-                <Route path='/projet' element = {<Project/>}/>
-                <Route path='/about' element = {<About/>}/>
-                <Route path='/contact' element = {<Contact/>}/>
-            </Route>
-        </Routes>
-            <Footer/>
-    </Router>
+  return (
+    
+      <Router>
+          <NavBar/>
+          
+            <Routes>
+                <Route path='/' element = {<Shared/>}>
+                    <Route index element = {<Home/>}/>
+                    <Route path='/projet' element = {<Project/>}/>
+                    <Route path='/about' element = {<About/>}/>
+                    <Route path='/contact' element = {<Contact/>}/>
+                </Route>
+            </Routes>
+  
+          <Footer/>
+      </Router>
   );
 };
 

@@ -5,16 +5,16 @@ export function Footer ()
     return (
         <footer>
             <div className="top-footer">
-                <p>Moise Kafeka .</p>
+                <p>Moïse Kafeka .</p>
             </div>
             <div className="middle-footer">
                 <ul className="footer-menu">
                     <li className="footer_menu_list">
-                        <Link to = '/'> Home </Link>
+                        <Link to = '/'>Acceuil</Link>
                         
                     </li>
                     <li className="footer_menu_list">
-                        <Link to = '/projet'> Projects </Link>
+                        <Link to = '/projet'> Oeuvres </Link>
                     </li>
                     <li className="footer_menu_list">
                         <Link to = '/about'> A propos</Link>

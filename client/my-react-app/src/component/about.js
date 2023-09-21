@@ -3,17 +3,21 @@ import React from "react";
 export function About ()
 {
     return (
-        <section class="section" id="about">
+        <div className="wrapper">
+            <section class="section" id="about">
         <div class="top-header">
             <h1>A propos de moi</h1>
         </div>
         <div class="row">
             <div class="col">
                 <div class="about-info">
-                    <h3>Mon introduction</h3>
-                    <p>J'ai toujours été passionner par le dessin à crayon depuis l'enfance.
-                        Evoluant en freelance j'ai déjà participer dans plusieur..... 
-                    </p>
+                    <h3>MOÏSE KAFEKA</h3>
+                    <p> Moïse Kafeka  est  un jeune  artiste  visuel  portraitiste, graphiste.</p>
+                    <p>Depuis son jeune  âge, il a  toujours  été  une  personne  passionnée et sensible  à  tout  ce qui  concerne  l'art.</p>
+                    <p>A l'âge  de 16 ans  il réalisait déjà sa passion et continuait  à surprendre  les gens  avec son talent inné.</p>
+                    <p>Aucun  rapport  avec  les études  poursuivies, nous  pouvons tout  simplement  dire  que ça a toujours été sa niche.</p>
+                    <p>Aujourd'hui  à  l'aide  du matériels : crayon   tablette  numérique et la peinture;  il est parvenu à réaliser un travail impressionnant quiconque le regarde.</p>
+                    <p>Avec  tout c'qu'il  a eu à réaliser l'avenir ne lui prophétise que le meilleur.</p>
                     <div class="about-btn">
                         <button class="btn">Télécharger le CV <i class="uil uil-import"></i></button>
                     </div>
@@ -22,41 +26,28 @@ export function About ()
             <div class="col">
                 <div class="skills-box">
                     <div class="skills-header">
-                        <h3>Frontend</h3>
+                        <h3>Numérique</h3>
                     </div>
                     <div class="skills-list">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>Bootstrap</span>
-                        <span>JavaScript</span>
-                        <span>Vue</span>
-                        <span>React</span>
-                        <span>Angular</span>
+                        <span>Tablette</span>
+                        <span>Palette Graphique</span>
+                        <span>Ordinateur</span>
+                        <span>Téléphone</span>
                     </div>
                 </div>
                 <div class="skills-box">
                     <div class="skills-header">
-                        <h3>Backend</h3>
+                        <h3>Physique</h3>
                     </div>
                     <div class="skills-list">
-                        <span>PHP</span>
-                        <span>JAVA</span>
-                        <span>Python</span>
-                        <span>C++</span>
-                    </div>
-                </div>
-                <div class="skills-box">
-                    <div class="skills-header">
-                        <h3>Database</h3>
-                    </div>
-                    <div class="skills-list">
-                        <span>MySQL</span>
-                        <span>PostgreSQL</span>
-                        <span>MongoDB</span>
+                        <span>crayon</span>
+                        <span>Gomme</span>
+                        <span>Papier</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+        </div>
     )
 }

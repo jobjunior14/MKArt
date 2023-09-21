@@ -4,9 +4,10 @@ import React from "react";
 export function Contact ()
 {
     return (
-        <section className="section" id="contact">
+       <div className="wrapper">
+         <section className="section" id="contact">
                 <div className="top-header">
-                    <h1>Get in touch</h1>
+                    <h1>Ecrivez moi</h1>
                     <span>Auriez vous un project à me proposer ? </span>
                 </div>
                 <div className="row">
@@ -33,5 +34,6 @@ export function Contact ()
                     </div>
                 </div>
             </section>
+       </div>
     )
 }

@@ -45,29 +45,29 @@ export function NavBar()
                 <ul className='nav_menu_list'>
                     <li className='nav_list'>
                 <NavLink 
-                    className={ ({isActive}) => isActive ? "nav-link active-link" : "nav-link "}
-                    to = '/'> Home </NavLink>
+                    className={ ({isActive}) => isActive ? "active-link" : "nav-link "}
+                    to = '/'>Acceuil</NavLink>
                         <div className='cirlce'></div>
                     </li>
 
                     <li className='nav_list'>
                 <NavLink 
-                    className={ ({isActive}) => isActive ? "nav-link active-link" : "nav-link "}
-                    to = '/projet'> Projets </NavLink>
+                    className={ ({isActive}) => isActive ? "active-link" : "nav-link "}
+                    to = '/projet'>Oeuvres</NavLink>
                         <div className='cirlce'></div>
                     </li>
 
                      <li className='nav_list'>
                 <NavLink 
-                    className={ ({isActive}) => isActive ? "nav-link active-link" : "nav-link "}
-                    to = '/about'> A propos </NavLink>
+                    className={ ({isActive}) => isActive ? "active-link" : "nav-link "}
+                    to = '/about'>Propos</NavLink>
                         <div className='cirlce'></div>
                     </li>
 
                     <li className='nav_list'>
                 <NavLink 
-                    className={ ({isActive}) => isActive ? "nav-link active-link" : "nav-link "}
-                    to = '/contact'> Contacts </NavLink> 
+                    className={ ({isActive}) => isActive ? "active-link" : "nav-link "}
+                    to = '/contact'>Contacts</NavLink> 
                         <div className='cirlce'></div>
                     </li>
                     <div className="nav-button">
