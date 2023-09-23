@@ -71,7 +71,7 @@ export function NavBar()
                         <div className='cirlce'></div>
                     </li>
                     <div className="nav-button">
-                        <button className="btn">Télécharger le CV <i className="uil uil-file-alt"></i></button>
+                        <button className="btn"> CV <i className="uil uil-file-alt"></i></button>
                     </div>
                 </ul>
             </div>

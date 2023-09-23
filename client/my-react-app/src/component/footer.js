@@ -1,7 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ScrollReveal from 'scrollreveal';
 export function Footer ()
 {
+    const sr = ScrollReveal({
+        origin: 'top',
+           
+    });
+    sr.reveal('.top-footer',{delay: 300});
+    sr.reveal('.footer-menu', {delay: 300});
+    sr.reveal ('.footer-social-icons', {delay: 200});
+
     return (
         <footer>
             <div className="top-footer">

@@ -5,6 +5,7 @@ import c from './3.jpg';
 import d from './4.jpg';
 import e from './5.jpg';
 import f from './6.jpg';
+import ScrollReveal from 'scrollreveal';
 
 import './Gallery.css';
 
@@ -36,6 +37,12 @@ const images = [
   ];
 
 export function Gallery() {
+
+//   const sr = ScrollReveal({
+//     origin: 'right',    
+// });
+// sr.reveal('.gallery_item', {delay: 300});
+
   return (
     <div className="gallery">
       {images.map((image, index) => (

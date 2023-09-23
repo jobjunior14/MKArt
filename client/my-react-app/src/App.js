@@ -9,22 +9,23 @@ import  "bootstrap/dist/css/bootstrap.min.css"
 import { NavBar } from './component/navBar';
 import "./style.css";
 import { Shared } from './component/routing';
+import ProfilChanger from './admin/profil';
 
 function App() {
+  
   return (
     
       <Router>
           <NavBar/>
-          
             <Routes>
                 <Route path='/' element = {<Shared/>}>
                     <Route index element = {<Home/>}/>
                     <Route path='/projet' element = {<Project/>}/>
                     <Route path='/about' element = {<About/>}/>
                     <Route path='/contact' element = {<Contact/>}/>
+                    <Route path='/admin' element = {<ProfilChanger/>}/>
                 </Route>
             </Routes>
-  
           <Footer/>
       </Router>
   );

@@ -9,16 +9,22 @@ app.use(express.json());
 
 app.use (morgan('dev'));
 
+app.use('/uploads/profil', express.static('uploads/profil'));
+app.use('/uploads//gallery', express.static('uploads/gallery'));
+
 app.use( (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
-const bralimaRouter = require('./routes/main_routes.js');
+const adminRoutes = require('./routes/adminRoutes.js');
+const userRoutes = require ('./routes/userRoutes.js');
 
-//3) Routes
-app.use ('/api/v1', bralimaRouter);
+
+//3) Routess
+app.use ('/api/v1/admin', adminRoutes);
+app.use ('/api/v1/user', userRoutes);
 
 app.all ('*', (req, res, next) =>
 {

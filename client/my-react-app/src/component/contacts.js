@@ -1,8 +1,16 @@
 
 import React from "react";
-
+import ScrollReveal from "scrollreveal";
 export function Contact ()
 {
+    const sr = ScrollReveal(
+        {
+            origin: 'right'
+        }
+    );
+
+    sr.reveal('.skills-box', {delay: 200});
+    sr.reveal ('.form-contorl', {delay: 200});
     return (
        <div className="wrapper">
          <section className="section" id="contact">
