@@ -10,6 +10,8 @@ import { NavBar } from './component/navBar';
 import "./style.css";
 import { Shared } from './component/routing';
 import ProfilChanger from './admin/profil';
+import GalleryChanger from './admin/gallery';
+import GalleryOnclick from './admin/galleryOnclick';
 
 function App() {
   
@@ -24,6 +26,8 @@ function App() {
                     <Route path='/about' element = {<About/>}/>
                     <Route path='/contact' element = {<Contact/>}/>
                     <Route path='/admin' element = {<ProfilChanger/>}/>
+                    <Route path='/gallery' element = {<GalleryChanger/>}/>
+                    <Route path='/gallery/:id' element = {<GalleryOnclick/>}/>
                 </Route>
             </Routes>
           <Footer/>

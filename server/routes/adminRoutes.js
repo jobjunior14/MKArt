@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {getProfil, postProfil, getGallery, postGallery, deleteGallery, updateGallery} = require ('../controller/adminController');
+const {getProfil, postProfil, getGallery, postGallery, deleteGallery, updateGallery, getDetail} = require ('../controller/adminController');
 // const {getGallery, postGallery, deleteGallery, updateGallery} = require ('../controller/userControllerGallery');
 
 const uploadProfil = require ('../middleware/uploadProfil');
@@ -21,5 +21,6 @@ router
     .route('/gallery/:id')
     .post(uploadGallery.single('photo'),updateGallery)
     .delete(deleteGallery)
+    .get (getDetail);
 
 module.exports = router;

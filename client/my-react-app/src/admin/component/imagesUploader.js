@@ -44,12 +44,13 @@ export default function ImageUploader (props)
                     <h2> Details du fichier</h2>
                 <p> Nom du fichier: {selectedFile.name}</p>
                 <button onClick={onFileUpload}> Telecharger </button>
-                </div>) :  (<h1> Profil mis a jour avec succes</h1>)}
+                </div>) :  (props.route === 'profil' ? <h1> Profil mis a jour avec succes</h1> : <h1> Photo mise dans la gallerie avec succes</h1>)}
             </div>
         )
     } else {
         
         return  ( 
+            
             <div style={{padding: '100px', position: 'relative'}}> 
             <input type='file' onChange={onFileChange} />
             <br/>

@@ -2,6 +2,7 @@ const Profil = require (`${__dirname}/../models/profilModel`);
 const Gallery = require ('../models/galerieModel')
 const catchAssynch = require ('../utils/catchAssynch');
 const AppError = require ('../utils/appError');
+const fs = require ('fs');
 
 exports.getProfil = catchAssynch (async (req, res, next) =>
 {
@@ -89,7 +90,17 @@ exports.updateGallery = catchAssynch (async ( req, res, next)=> {
 
     if (req.file) {
 
-        const profil = await Gallery.findByIdAndUpdate(req.params.id, {photo: req.file.path}, {new: true});
+        const profil = await Gallery.findById(req.params.id )
+        
+        //deleting picture from the system
+        try {
+            fs.unlinkSync(profil.photo)
+        } catch (error) {
+            console.log(error)
+        };
+        
+        //update the pat with the same ID
+        await Gallery.findByIdAndUpdate(req.params.id, {photo: req.file.path}, {new: true});
 
         res.status(200).json({
             status: 'success',
@@ -111,14 +122,35 @@ exports.deleteGallery = catchAssynch (async ( req, res, next)=> {
 
         const profil = await Gallery.findByIdAndDelete(req.params.id);
         
+        
         if (!profil) {
             
             return next ( new AppError ("Ouups :( cette photo n'existe pas dans le serveur", 404))
         };
         
+        try {
+            fs.unlinkSync(profil.photo)
+        } catch (error) {
+            console.log(error)
+        };
+
         res.status(200).json ({
             status: 'sucess',
             message: "Photo supprimée avec succes"
         })
 });
 
+exports.getDetail = catchAssynch (async (req, res, next) => {
+
+    const profil = await Gallery.findById(req.params.id);
+
+    if (!profil) {
+            
+        return next ( new AppError ("Ouups :( cette photo n'existe pas dans le serveur", 404))
+    };
+
+    res.status(200).json ({
+        status: 'sucess',
+        photo: profil
+    })
+});

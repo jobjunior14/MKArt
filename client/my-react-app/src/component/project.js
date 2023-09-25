@@ -1,6 +1,8 @@
-import React from "react";
-import Gallery from './gallerie';
+import React, {useState,useEffect} from "react";
+import GalleryUser from './galleryDisplay';
 import ScrollReveal from "scrollreveal";
+import axios from "axios";
+
 export function Project ()
 {
     const sr = ScrollReveal({
@@ -10,6 +12,32 @@ export function Project ()
     sr.reveal('.roller', {delay: 400});
     sr.reveal('.project-container', {delay: 500});
     sr.reveal('.project-box', {delay: 500});
+
+
+    const [photo, setPhoto] = useState(null);
+
+    useEffect( () => {
+        
+       const fetchProfil = async () => {
+
+            try {
+                
+                const data = await axios.get('http://localhost:5000/api/v1/user/gallery');
+                setPhoto(data.data);
+                
+            } catch (err) {
+                if (err.message) {
+
+                    console.log( err.data, err.data.status);
+                } else {
+
+                    console.log (err);
+                }
+            }
+       };
+       fetchProfil();
+
+    }, []);
     
     return (
        <div className="wrapper">
@@ -38,7 +66,7 @@ export function Project ()
                     
                 </p>
                 <div className="roller">
-                    <Gallery/>
+                    {photo === null ? <p>Loading</p> : <GalleryUser photo = {photo.data.gallery} />}
                 </div>
             </section>
 
