@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from "react";
 import GalleryUser from './galleryDisplay';
 import ScrollReveal from "scrollreveal";
-import axios from "axios";
+import axios from "../axiosUrl";
 
 export function Project ()
 {
@@ -22,7 +22,7 @@ export function Project ()
 
             try {
                 
-                const data = await axios.get('http://localhost:5000/api/v1/user/gallery');
+                const data = await axios.get('/user/gallery');
                 setPhoto(data.data);
                 
             } catch (err) {

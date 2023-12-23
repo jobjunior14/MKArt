@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ImageUploader from "./component/imagesUploader";
-import axios from "axios";
+import axios from "../axiosUrl";
 import Gallery from "./component/gallerieDisplay";
 
 export default function GalleryChanger () {
@@ -15,7 +15,7 @@ export default function GalleryChanger () {
 
             try {
                 
-                const data = await axios.get('http://localhost:5000/api/v1/user/gallery');
+                const data = await axios.get('/user/gallery');
                 setPhoto(data.data);
                 
             } catch (err) {

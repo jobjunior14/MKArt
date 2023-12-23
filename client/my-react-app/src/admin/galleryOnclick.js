@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../axiosUrl";
 import ImageUploader from "./component/imagesUploader";
 import GalleryUser from "../component/galleryDisplay";
 
@@ -20,7 +20,7 @@ export default function GalleryOnclick()
  
              try {
                  
-                 const data = await axios.get(`http://localhost:5000/api/v1/admin/gallery/${id}`);
+                 const data = await axios.get(`/admin/gallery/${id}`);
                  setPhoto([data.data.photo]);
                  
              } catch (err) {
@@ -46,7 +46,7 @@ export default function GalleryOnclick()
  
             try {
                 
-                const data = await axios.delete(`http://localhost:5000/api/v1/admin/gallery/${id}`);
+                const data = await axios.delete(`http://192.168:5000/api/v1/admin/gallery/${id}`);
                 setPhoto(null);
                 setMessage(data.data ? 'Photo supprimee avec succes' : 'veillez patienter')
             } catch (err) {

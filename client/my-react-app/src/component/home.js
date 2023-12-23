@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { SocialIcon } from 'react-social-icons';
 import { Type } from './typeEffect';
 import ScrollReveal from 'scrollreveal';
-import axios from 'axios';
+import axios from '../axiosUrl';
 
 
 export function Home ()
@@ -15,7 +15,7 @@ export function Home ()
 
             try {
                 
-                const data = await axios.get('http://localhost:5000/api/v1/user/profil');
+                const data = await axios.get('/user/profil');
                 setProfil(data.data.photo[0].photo);
                 
             } catch (err) {
@@ -29,12 +29,6 @@ export function Home ()
             }
        };
        fetchProfil();
-
-    // fetch ('http://localhost:5000/api/v1/user/profil').then (
-    //     res => res.json()
-    // ).then ( 
-    //     data =>setProfil(data.photo[0].photo)
-    // )
 
     }, []);
     console.log (profil)
@@ -104,7 +98,7 @@ export function Home ()
 
                 <div className="featured-image">
                     <div className="image">
-                        { profil === null ? <p>Loading...</p> : <img src= {`http://localhost:5000/${profil}`} alt="avatar"/>} 
+                        { profil === null ? <p>Loading...</p> : <img src= {`http://192.168.43.47:5000/${profil}`} alt="avatar"/>} 
                     </div>
                 </div>
             </section>

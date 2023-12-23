@@ -13,7 +13,7 @@ export function GalleryUser(props) {
          <img
           key={index}
           className="gallery__item"
-          src={ `http://localhost:5000/${image.photo}`}
+          src={ `http://192.168.43.47:5000/${image.photo}`}
           alt={image._id}
         />
       ))}

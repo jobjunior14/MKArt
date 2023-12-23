@@ -6,7 +6,7 @@ export function NavBar()
     const [showNav, setShowNav] = useState(false);
     const [styeShadwonNav, setstyeShadwonNav ] = useState ({
         boxShadow : "none",
-        height : "90px",
+        height : "70px",
         lineHeight : "90px"
     });
 
@@ -23,7 +23,7 @@ export function NavBar()
             setstyeShadwonNav (
                 {
                     boxShadow : "none",
-                    height : "90px",
+                    height : "70px",
                     lineHeight : "90px"
                 }
             )

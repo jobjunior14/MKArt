@@ -6,7 +6,6 @@ import {About} from './component/about';
 import {Contact} from './component/contacts';
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import  "bootstrap/dist/css/bootstrap.min.css"
-import { NavBar } from './component/navBar';
 import "./style.css";
 import { Shared } from './component/routing';
 import ProfilChanger from './admin/profil';
@@ -18,7 +17,6 @@ function App() {
   return (
     
       <Router>
-          <NavBar/>
             <Routes>
                 <Route path='/' element = {<Shared/>}>
                     <Route index element = {<Home/>}/>

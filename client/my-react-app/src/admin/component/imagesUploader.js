@@ -25,7 +25,7 @@ export default function ImageUploader (props)
 
         try {
 
-            const response = await axios.post(`http://localhost:5000/api/v1/admin/${props.route}`, formData);
+            const response = await axios.post(`http://192.168.43.47:5000/api/v1/admin/${props.route}`, formData);
             setServerResponse(response.data);
 
         } catch (error) {

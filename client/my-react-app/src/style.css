@@ -556,17 +556,20 @@
      }
      .social_icons{
          margin-top: 2em;
+         margin-bottom: 6em;
      }
      .featured-image{
-         order: 1;
-         justify-content: center;
-         min-height: 150px;
-         width: 100%;
-         margin-top: 65px;
+        position: relative;
+        order: 1;
+        justify-content: left;
+        min-height: 100px;
+        width: 100%;
+        margin-top: 65px;
+        left: 100px;
      }
      .image, .image img{
-         width: 350px;
-         height: 350px;
+         width: 250px;
+         height: 250px;
      }
      .row{
          display: flex;
