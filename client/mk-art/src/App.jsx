@@ -8,9 +8,9 @@ import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import  "bootstrap/dist/css/bootstrap.min.css"
 import "./style.css";
 import { Shared } from './component/routing';
-import ProfilChanger from './admin/profil';
-import GalleryChanger from './admin/gallery';
-import GalleryOnclick from './admin/galleryOnclick';
+import ProfilChanger from '../../../ddf/src/admin/profil';
+import GalleryChanger from '../../../ddf/src/admin/gallery';
+import GalleryOnclick from '../../../ddf/src/admin/galleryOnclick';
 
 function App() {
   
