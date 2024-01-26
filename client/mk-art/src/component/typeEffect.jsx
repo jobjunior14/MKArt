@@ -1,4 +1,3 @@
- import React from "react";
  import Typewriter from "typewriter-effect";
 
  export function Type ()
@@ -7,8 +6,8 @@
         <Typewriter
             options={{
                 strings: [
-                    'Desinnateur',
-                    'Portraitiste'
+                    ' Desinnateur',
+                    ' Portraitiste'
                 ],
                 autoStart: true,
                 loop: true,

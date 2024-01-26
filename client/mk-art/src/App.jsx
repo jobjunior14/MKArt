@@ -5,12 +5,11 @@ import {Project } from './component/project';
 import {About} from './component/about';
 import {Contact} from './component/contacts';
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import  "bootstrap/dist/css/bootstrap.min.css"
-import "./style.css";
 import { Shared } from './component/routing';
-import ProfilChanger from '../../../ddf/src/admin/profil';
-import GalleryChanger from '../../../ddf/src/admin/gallery';
-import GalleryOnclick from '../../../ddf/src/admin/galleryOnclick';
+import ProfilChanger from '../src/admin/profil';
+import GalleryChanger from '../src/admin/gallery';
+import GalleryOnclick from '../src/admin/galleryOnclick';
+import './style.css'
 
 function App() {
   
@@ -20,9 +19,9 @@ function App() {
             <Routes>
                 <Route path='/' element = {<Shared/>}>
                     <Route index element = {<Home/>}/>
-                    <Route path='/projet' element = {<Project/>}/>
-                    <Route path='/about' element = {<About/>}/>
-                    <Route path='/contact' element = {<Contact/>}/>
+                    <Route path='/projets' element = {<Project/>}/>
+                    <Route path='/apropos' element = {<About/>}/>
+                    <Route path='/contacts' element = {<Contact/>}/>
                     <Route path='/admin' element = {<ProfilChanger/>}/>
                     <Route path='/gallery' element = {<GalleryChanger/>}/>
                     <Route path='/gallery/:id' element = {<GalleryOnclick/>}/>

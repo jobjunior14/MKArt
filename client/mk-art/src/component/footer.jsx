@@ -1,6 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import ScrollReveal from 'scrollreveal';
+import { SocialIcon } from 'react-social-icons';
+
 export function Footer ()
 {
     const sr = ScrollReveal({
@@ -12,32 +13,53 @@ export function Footer ()
     sr.reveal ('.footer-social-icons', {delay: 200});
 
     return (
-        <footer>
-            <div className="top-footer">
-                <p>Moïse Kafeka .</p>
+        <footer className='w-full justify-center items-center flex flex-col' >
+            <div className="text-2xl font-semibold">
+                <p>Moïse Kafeka</p>
             </div>
-            <div className="middle-footer">
-                <ul className="footer-menu">
-                    <li className="footer_menu_list">
-                        <Link to = '/'>Acceuil</Link>
+
+            <div className="">
+                <ul className="flex my-5 sm:gap-x-6 gap-x-3">
+                    <li className="p-1 ">
+                        <Link className='text-teal-500' to = '/'>Acceuil</Link>
                         
                     </li>
-                    <li className="footer_menu_list">
-                        <Link to = '/projet'> Oeuvres </Link>
+                    <li className="p-1 ">
+                        <Link className='text-teal-500' to = '/projets'> Projets </Link>
                     </li>
-                    <li className="footer_menu_list">
-                        <Link to = '/about'> A propos</Link>
+                    <li className="p-1 ">
+                        <Link className='text-teal-500' to = '/apropos'> A&nbsp;propos</Link>
                     </li>
-                    <li className="footer_menu_list">
-                        <Link to = '/contact'> Contacts</Link>
+                    <li className="p-1 ">
+                        <Link className='text-teal-500' to = '/contacts'> Contacts</Link>
                     </li>
                 </ul>
             </div>
-            <div className="footer-social-icons">
-                <div className="icon"><i className="uil uil-instagram"></i></div>
-                <div className="icon"><i className="uil uil-linkedin-alt"></i></div>
-                <div className="icon"><i className="uil uil-twitter"></i></div>
-                <div className="icon"><i className="uil uil-github-alt"></i></div>
+            <div className="flex sm:gap-x-5 gap-x-5 mb-5">
+                <div > <SocialIcon 
+                    target="_blank" 
+                    className="shadow-gray-600 shadow-md rounded-full" 
+                    bgColor='black' 
+                    fgColor='white' 
+                    url="https://twitter.com" />
+                </div>
+
+                <div  > <SocialIcon 
+                    target="_blank" 
+                    className="shadow-gray-600 shadow-md rounded-full" 
+                    bgColor='black' 
+                    fgColor='white' 
+                    url="https://facebook.com" />
+                </div>
+
+                <div  > <SocialIcon 
+                    target="_blank" 
+                    className="shadow-gray-600 shadow-md rounded-full" 
+                    bgColor='black' 
+                    fgColor='white' 
+                    url="https://instagram.com" />
+                </div>
+                        
             </div>
             <div className="bottom-footer">
                 <p>Copyright &copy; <a href="#home" style={{textDecoration: 'none'}}>Job Junior</a> - All rights reserved

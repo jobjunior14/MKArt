@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axiosUrl';
 import React, {useState} from 'react';
 
 export default function ImageUploader (props)
@@ -25,7 +25,7 @@ export default function ImageUploader (props)
 
         try {
 
-            const response = await axios.post(`http://192.168.43.47:5000/api/v1/admin/${props.route}`, formData);
+            const response = await axios.post(`/admin/${props.route}`, formData);
             setServerResponse(response.data);
 
         } catch (error) {

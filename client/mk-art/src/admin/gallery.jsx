@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ImageUploader from "./component/imagesUploader";
-import axios from "../../../client/mk-art/src/axiosUrl";
+import axios from "../axiosUrl";
 import Gallery from "./component/gallerieDisplay";
 
 export default function GalleryChanger () {

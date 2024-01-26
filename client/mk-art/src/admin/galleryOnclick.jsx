@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "../../../client/mk-art/src/axiosUrl";
+import axios from "../axiosUrl";
 import ImageUploader from "./component/imagesUploader";
 import GalleryUser from "../component/galleryDisplay";
 
