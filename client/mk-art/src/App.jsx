@@ -13,8 +13,9 @@ import './style.css'
 
 function App() {
   
-  return (
-    
+  return  (
+    <div className=''>
+
       <Router>
             <Routes>
                 <Route path='/' element = {<Shared/>}>
@@ -29,6 +30,7 @@ function App() {
             </Routes>
           <Footer/>
       </Router>
+    </div>
   );
 };
 

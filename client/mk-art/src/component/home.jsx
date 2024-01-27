@@ -32,7 +32,7 @@ export function Home ()
     
     return (
 
-        <div className='w-full  will-change-scroll'>
+        <div className='w-full '>
             <section className="lg:flex lg:mt-40 mt-32 justify-center lg:px-20 px-5 items-center">
                 
                 <div className="lg:mr-40 lg:pb-28 -mb-10 lg:hidden flex justify-center  ">
