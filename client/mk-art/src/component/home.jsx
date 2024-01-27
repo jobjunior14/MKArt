@@ -1,35 +1,11 @@
-import {useEffect, useState} from 'react';
-import { SocialIcon } from 'react-social-icons';
-import { Type } from './typeEffect';
-import axios from '../axiosUrl';
+ import { Type } from './typeEffect';
+import useDataFecther from '../util/dataFecther';
 
 
 export function Home ()
 {
-    //uploading data from server 
-    const [profil, setProfil] = useState(null);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(null);
-    
-    useEffect( () => {
-        
-       const fetchProfil = async () => {
+    const {loading, error, data} = useDataFecther('/user/profil');
 
-            try {
-                setLoading(true);
-                const data = await axios.get('/user/profil');
-                setProfil(data.data.photo[0].photo);
-                
-            } catch (err) {
-                setError(err);
-                setLoading(false);
-            } finally {
-                setLoading(false);
-            }
-       }; fetchProfil();
-
-    }, [profil]);
-    
     return (
 
         <div className='w-full '>
@@ -38,9 +14,9 @@ export function Home ()
                 <div className="lg:mr-40 lg:pb-28 -mb-10 lg:hidden flex justify-center  ">
                    
                     { !loading && !error ? <div className="flex justify-center items-center">
-                        <img src= {`http://localhost:5000/${profil}`} className=' h-80 w-60 w- ' alt="avatar"/>
+                        <img src= {`http://localhost:5000/${data ? data.photo[0].photo : ''}`} className=' h-80 w-60 w- ' alt="avatar"/>
                     </div> : 
-                    !error && loading  ? <div className='w-64 h-64 animate-pulse border-2 border-gray-300 rounded-xl'></div> : <div className='w-64 h-64 border-2 border-gray-300 rounded-xl flex justify-center items-center p-5'> <p>Erreur lors du chargement de l&apos;image</p></div>
+                    !error && loading  ? <div className='w-64 h-64 animate-pulse bg-slate-700 bg-opacity-35 rounded-xl'></div> : <div className='w-64 h-64 border-2 border-gray-300 rounded-xl flex justify-center items-center p-5'> <p>Erreur lors du chargement de l&apos;image</p></div>
                     }
                 </div>
 
@@ -65,8 +41,8 @@ export function Home ()
                 </div>
 
                 <div className="mr-40 pb-0 hidden lg:block">
-                   {!loading && !error ? <img src= {`http://localhost:5000/${profil}`} className=' h-3/4 w-96 float-right' alt="avatar"/> : 
-                    !error && loading ? <div className='w-64 h-64 animate-pulse border-2 border-gray-300 rounded-xl'></div> : <div className='w-64 h-64 border-2 border-gray-300 rounded-xl flex justify-center items-center p-5'> <p>Erreur lors du chargement de l&apos;image</p></div>
+                   {!loading && !error ? <img src= {`http://localhost:5000/${data ? data.photo[0].photo : ''}`} className=' h-3/4 w-96 float-right' alt="avatar"/> : 
+                    !error && loading ? <div className='w-64 h-64 animate-pulse  bg-slate-700 bg-opacity-35 rounded-xl'></div> : <div className='w-64 h-64 border-2 border-gray-300 rounded-xl flex justify-center items-center p-5'> <p>Erreur lors du chargement de l&apos;image</p></div>
                    }
                 </div>
             </section>

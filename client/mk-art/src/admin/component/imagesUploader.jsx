@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import axios from '../../axiosUrl';
-import React, {useState} from 'react';
+import {useState} from 'react';
 
 export default function ImageUploader (props)
 {
@@ -9,7 +10,7 @@ export default function ImageUploader (props)
     function onFileChange(e) {
 
         setSelectedFile(e.target.files[0]);
-    };
+    }
 
     async function onFileUpload () {
 
@@ -25,14 +26,19 @@ export default function ImageUploader (props)
 
         try {
 
-            const response = await axios.post(`/admin/${props.route}`, formData);
+            // eslint-disable-next-line react/prop-types
+            const response = await axios.post(`/admin/${props.route}`, formData, 
+                {
+                    headers: {"Content-Type": "multipart/form-data"}
+                }
+            );
             setServerResponse(response.data);
 
         } catch (error) {
             console.log (error)
         }
 
-    };
+    }
    
 
     if ( selectedFile ) {

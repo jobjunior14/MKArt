@@ -2,6 +2,7 @@ const Profil = require (`${__dirname}/../models/profilModel`);
 const Gallery = require ('../models/galerieModel')
 const catchAssynch = require ('../utils/catchAssynch');
 const AppError = require ('../utils/appError');
+const BgPhoto = require ('../models/bgPhoto');
 const fs = require ('fs');
 
 exports.getProfil = catchAssynch (async (req, res, next) =>
@@ -18,31 +19,35 @@ exports.getProfil = catchAssynch (async (req, res, next) =>
 
 exports.postProfil = catchAssynch (async (req, res, next) => {
 
+
     if (req.file) {
 
         let photo = await Profil.find();
         const a = [...photo];
-        if (a.length >= 2)
-        {
-            const profil = await Profil.findByIdAndDelete(photo[0].id);
+        
+        if (a.length === 0 ) {
+            await Profil.create({photo: req.file.path});
 
-            res.status(201).json({
-                status: 'sucess',
-                message: 'Profile Mis a jour avec succes'
+            res.status(201).json ({
+                status: 'success',
+                message: 'profil cree avec succes'
             });
         } else {
-            
-            const profil =  await Profil.create({photo: req.file.path});
+            await Profil.findByIdAndDelete(photo[0].id);
+            //delete the old profil
+            fs.unlinkSync(photo[0].photo);
+            //save the path of the new profil 
+            await Profil.create({photo: req.file.path});
 
-            res.status(201).json({
-                status: 'sucess',
-                message: 'Profile crée avec succes'
+            res.status(201).json ({
+                status: 'success',
+                message: 'profil mis a jour avec succes'
             });
-        }        
+        }
     } else {
-        return next (new AppError('Vous devrez mettre une Photo au format PNG', 404));
-    }
-    
+
+        return next (new AppError('Vous devrez mettre une Photo au format PNG', 400));
+    } 
 });
 
 exports.getGallery = catchAssynch (async ( req, res, next) => {
@@ -152,5 +157,86 @@ exports.getDetail = catchAssynch (async (req, res, next) => {
     res.status(200).json ({
         status: 'sucess',
         photo: profil
+    })
+});
+
+exports.setBgPhoto = catchAssynch (async (req, res, next) => {
+
+    if (req.file) {
+
+        let photo = await BgPhoto.find();
+        const a = [...photo];
+        console.log (  a);
+
+        if (a.length === 0 ) {
+
+            if (!req.query.oeuvres && !req.query.projets ) {
+                return next( new AppError('Ouuups mauvaise demande', 400));
+            };
+
+            if (req.query.oeuvres) {
+
+                await BgPhoto.create({oeuvres: req.file.path});
+            }
+
+            if (req.query.projets) {
+
+                await BgPhoto.create({projets: req.file.path});
+            }
+
+            res.status(201).json ({
+                status: 'success',
+                message: 'arrier plan telecharger avec succes'
+            });
+        } else {
+
+            const bg = await BgPhoto.find();
+
+            if (!req.query.oeuvres && !req.query.projets ) {
+                return next( new AppError('Ouuups mauvaise demande', 400));
+            };
+
+            if (req.query.oeuvres) {
+
+                if (bg[0].oeuvres) {
+
+                    fs.unlinkSync(bg[0].oeuvres);
+                    bg[0].oeuvres = req.file.path;
+                } else {
+                    bg[0].oeuvres = req.file.path;
+                }
+            };
+
+            if (req.query.projets) {
+
+                if (bg[0].projets) {
+
+                    fs.unlinkSync(bg[0].projets);
+                    bg[0].projets = req.file.path;
+                } else {
+                    bg[0].projets = req.file.path;
+                }
+            }
+
+
+            await bg[0].save();
+            res.status(201).json ({
+                status: 'success',
+                message: 'arrier plan mis a jour avec succes'
+            });
+        }
+    } else {
+
+        return next (new AppError('Vous devrez mettre une Photo au format PNG', 400));
+    } 
+});
+
+exports.getBgPhoto = catchAssynch (async (req, res, next) => {
+
+    const bg = await BgPhoto.find();
+
+    res.status(200).json({
+        status: 'success',
+        data: bg
     })
 });

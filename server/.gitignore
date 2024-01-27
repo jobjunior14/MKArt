@@ -3,8 +3,12 @@
 # dependencies
 /node_modules
 /.pnp
+/uploads
 .pnp.js
+.png
+.jpg
 
+uploads
 node_modules
 # testing
 /coverage

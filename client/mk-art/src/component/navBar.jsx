@@ -8,6 +8,7 @@ export function NavBar ()
     const decorativeActiveLink = {
         home: useMatch('/'),
         projets: useMatch('/projets'),
+        projetsSubLink: useMatch('/projets/oeuvresUnique'),
         contacts: useMatch('/contacts'),
         apropos: useMatch('/apropos'),
     }
@@ -31,7 +32,6 @@ export function NavBar ()
     //     }
     // };
     
-
     function toggleTheme () {
 
 
@@ -65,7 +65,7 @@ export function NavBar ()
 
                 <div className='block lg:flex items-center lg:mr-96 justify-between'>
                     <div className='relative flex justify-center'>
-                        { decorativeActiveLink.home && <div className='h-1 w-1 bg-white absolute rounded-full top-16 lg:top-7 scale-x-150 duration-500 px-1 '></div>}
+                        { decorativeActiveLink.home && <div className='h-1 w-1 bg-white absolute rounded-full top-16 lg:top-7 scale-x-150 duration-500 px-1 delay-500  '></div>}
                         <NavLink 
                             onClick={toggle}
                             className={ ({isActive}) => isActive ? activeLink : `duration-300 dark:text-gray-100 text-gray-700 my-9 lg:my-0 block lg:flex hover:text-indigo-300 font-bold  lg:mx-10`}
@@ -74,7 +74,7 @@ export function NavBar ()
 
                     <div className='relative flex justify-center'>
 
-                        { decorativeActiveLink.projets && <div className='h-1 w-1 bg-white absolute rounded-full top-16 lg:top-7 scale-x-150 duration-500 px-1'></div>}
+                        { (decorativeActiveLink.projets || decorativeActiveLink.projetsSubLink) && <div className='h-1 w-1 bg-white absolute rounded-full top-16 lg:top-7 scale-x-150 duration-500 px-1 delay-500'></div>}
                         <NavLink 
                             onClick={toggle}
                             className={ ({isActive}) => isActive ? activeLink : `duration-300 dark:text-gray-100 text-gray-700 my-9 lg:my-0 hover:text-indigo-300 block lg:flex font-bold lg:mx-10`}
@@ -83,7 +83,7 @@ export function NavBar ()
 
                     <div className='relative flex justify-center'>
 
-                        { decorativeActiveLink.contacts && <div className='h-1 w-1 bg-white absolute rounded-full top-16 lg:top-7 scale-x-150 duration-500 px-1'></div>}
+                        { decorativeActiveLink.contacts && <div className='h-1 w-1 bg-white absolute rounded-full top-16 lg:top-7 scale-x-150 duration-500 px-1 delay-500'></div>}
                         <NavLink 
                             onClick={toggle}
                             className={ ({isActive}) => isActive ? activeLink : `duration-300 dark:text-gray-100 text-gray-700 my-9 lg:my-0 hover:text-indigo-300 block lg:flex font-bold lg:mx-10`}
@@ -91,7 +91,7 @@ export function NavBar ()
                     </div>
 
                     <div className='relative flex justify-center'>
-                        { decorativeActiveLink.apropos && <div className='h-1 w-1 bg-white absolute rounded-full top-16 lg:top-7 scale-x-150 duration-500 px-1'></div>}
+                        { decorativeActiveLink.apropos && <div className='h-1 w-1 bg-white absolute rounded-full top-16 lg:top-7 scale-x-150 duration-500 px-1 delay-500'></div>}
                         <NavLink 
                             onClick={toggle}
                             className={ ({isActive}) => isActive ? activeLink : `duration-300 dark:text-gray-100 text-gray-700 my-9 lg:my-0 hover:text-indigo-300 block lg:flex font-bold lg:mx-10`}
