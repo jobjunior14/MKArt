@@ -4,9 +4,12 @@ import ImageUploader from "./component/imagesUploader";
 export default function ProfilChanger () {
 
     return (
-        <ImageUploader 
-            nom = 'profil'
-            route = 'profil'   
-        />
+        <div className="p-10 flex justify-center items-center">
+            
+            <ImageUploader 
+                nom = 'profil'
+                route = 'profil'   
+            />
+        </div>
     )
 }

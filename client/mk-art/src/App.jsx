@@ -10,6 +10,7 @@ import ProfilChanger from '../src/admin/profil';
 import GalleryChanger from '../src/admin/gallery';
 import GalleryOnclick from '../src/admin/galleryOnclick';
 import OeuvresUniques from './component/oeuvreUnique';
+import BGChanger from './admin/bgImage';
 import './style.css'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
                     <Route path='/contacts' element = {<Contact/>}/>
                     <Route path='/projets/oeuvresUnique' element = {<OeuvresUniques/>}/>
                     <Route path='/admin' element = {<ProfilChanger/>}/>
+                    <Route path='/bgChanger' element = {<BGChanger/>}/>
                     <Route path='/gallery' element = {<GalleryChanger/>}/>
                     <Route path='/gallery/:id' element = {<GalleryOnclick/>}/>
                 </Route>
@@ -34,6 +36,6 @@ function App() {
       </Router>
     </div>
   );
-};
+}
 
 export default App;

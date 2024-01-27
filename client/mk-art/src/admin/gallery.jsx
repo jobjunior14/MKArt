@@ -1,55 +1,36 @@
 import React, {useEffect, useState} from "react";
 import ImageUploader from "./component/imagesUploader";
-import axios from "../axiosUrl";
 import Gallery from "./component/gallerieDisplay";
-
+import useDataFecther from "../util/dataFecther";
 export default function GalleryChanger () {
 
-    // state to save link of pictures in gallerry
-    const [photo, setPhoto] = useState(null);
-
-    //fetching data
-    useEffect( () => {
-        
-       const fetchProfil = async () => {
-
-            try {
-                
-                const data = await axios.get('/user/gallery');
-                setPhoto(data.data);
-                
-            } catch (err) {
-                if (err.message) {
-
-                    console.log( err.data, err.data.status);
-                } else {
-
-                    console.log (err);
-                }
-            }
-       };
-       fetchProfil();
-
-    }, []);
+    const {loading, error, data} = useDataFecther('/user/gallery');
 
 
     return (
 
-       <div style={{paddingInline: '10px', position: 'relative', display: 'inline-block'}}>
-        <h2 style={{position: 'relative', justifyContent: 'center', margin: '100px auto' }}> Clickez sur une image pour la remplacer ou la supprimer </h2>
+       <>
+            <div className='p-20 mt-10'>
+                { !loading && !error ? <div className="flex justify-center items-center">
+                    <Gallery photo = { data ? data.data.gallery : ''} />
+                </div> : 
+                !error && loading  ? <div className='gallery'>
 
-            {/* display images and retruning id onclick */}
-           {photo === null ? <p>Loading...</p> :  photo.results === 0 ? <p> Pas de Photo ouups</p> :
-                <Gallery 
-                    photo = {photo.data.gallery}
-                />
-           }
+                    <div className='gallery_item w-["200px"] animate-pulse h-64 bg-slate-700 bg-opacity-30'></div>
+                    <div className='gallery_item w-["200px"] animate-pulse h-64 bg-slate-700 bg-opacity-30'></div>
+                    <div className='gallery_item w-["200px"] animate-pulse h-64 bg-slate-700 bg-opacity-30'></div>
+                    <div className='gallery_item w-["200px"] animate-pulse h-64 bg-slate-700 bg-opacity-30'></div>
+                    <div className='gallery_item w-["200px"] animate-pulse h-64 bg-slate-700 bg-opacity-30'></div>
+                    <div className='gallery_item w-["200px"] animate-pulse h-64 bg-slate-700 bg-opacity-30'></div>
+                </div> : <div className='w-64 h-64 border-2 border-gray-300 rounded-xl flex justify-center items-center p-5'> <p>Erreur lors du chargement de l&apos;image</p></div>
+                }
+            </div>
 
             {/* to post image in gallery */}
             <ImageUploader 
                 nom = 'photo'
                 route = 'gallery' 
             />
-       </div>
+       </>
     )
 }

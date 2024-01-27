@@ -1,6 +1,6 @@
 import GalleryUser from './galleryDisplay';
 import useDataFecther from '../util/dataFecther';
-import '../Gallery.css'
+import '../Gallery.css';
 export default function OeuvresUniques () {
 
     const {loading, error, data} = useDataFecther('/user/gallery');
@@ -23,10 +23,5 @@ export default function OeuvresUniques () {
             </div> : <div className='w-64 h-64 border-2 border-gray-300 rounded-xl flex justify-center items-center p-5'> <p>Erreur lors du chargement de l&apos;image</p></div>
             }
         </div>
-    )
-    // return (
-    //     <div className="p-20 mt-10">
-    //         {data === null ? <p>Loading</p> : <GalleryUser photo = {data.data.gallery} />}
-    //     </div> 
-    // )
+    );
 }

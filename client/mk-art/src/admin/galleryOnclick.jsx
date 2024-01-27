@@ -1,44 +1,19 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "../axiosUrl";
 import ImageUploader from "./component/imagesUploader";
 import GalleryUser from "../component/galleryDisplay";
+import useDataFetcher from '../util/dataFecther';
 
 export default function GalleryOnclick()
 {
     const {id} = useParams();
 
-     // state to save link of pictures in gallerry
-     const [photo, setPhoto] = useState(null);
+    const {loading, error, data} = useDataFetcher(`/admin/gallery/${id}`);
 
      //message to display once delete
      const [message, setMessage] = useState(null);
-     //fetching data
-     useEffect( () => {
-         
-        const fetchProfil = async () => {
- 
-             try {
-                 
-                 const data = await axios.get(`/admin/gallery/${id}`);
-                 setPhoto([data.data.photo]);
-                 
-             } catch (err) {
-                 if (err.message) {
- 
-                     console.log( err.data);
-                 } else {
- 
-                     console.log (err);
-                 }
-             }
-        };
-        fetchProfil();
- 
-     }, [id]);
-
-
-
+     
      // delete pictuer by Id //
      function deletePicture () {
 
@@ -46,8 +21,8 @@ export default function GalleryOnclick()
  
             try {
                 
-                const data = await axios.delete(`http://192.168:5000/api/v1/admin/gallery/${id}`);
-                setPhoto(null);
+                const data = await axios.delete(`/admin/gallery/${id}`);
+                
                 setMessage(data.data ? 'Photo supprimee avec succes' : 'veillez patienter')
             } catch (err) {
                 if (err.message) {
@@ -60,24 +35,25 @@ export default function GalleryOnclick()
             }
        };
        fetchProfil();
-     };
+     }
 
      return (
 
-        <div style={{paddingInline: '10px', position: 'relative', display: 'inline-block'}}>
-         <h2 style={{position: 'relative', justifyContent: 'center', margin: '100px auto' }}> Clickez sur delete pour supprimer  </h2>
+        <div className="p-3 mt-28 justify-center items-center flex flex-col">
+         <h2 className="text-center text-teal-300 font-semibold"> Clicker sur *Choisissez un fichier pour mettre a jour l&apos;image*  </h2>
  
              {/* display images and retruning id onclick */}
-            {photo === null ? <p>{message === null ? 'Loading...' : message}</p> :
-                 <GalleryUser
-                     photo = {photo}
-                 />
+            {data === null ? <p>{message === null ? 'Loading...' : message}</p> :
+                <di className = 'justify-center items-center flex'>
+                    <GalleryUser
+                        photo = {[data.photo]}
+                    />
+                </di>
             }
 
-            {/* deleting button */}
-            <button onClick={deletePicture}> Supprimer La photo</button>
+            <button className="m-5" onClick={deletePicture}> Supprimer La photo</button>
            
-             {/* to post image in gallery */}
+             {/* to update Image*/}
              <ImageUploader 
                  nom = 'photo'
                  route = {`gallery/${id}`}

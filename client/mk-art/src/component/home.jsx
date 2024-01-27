@@ -1,11 +1,12 @@
  import { Type } from './typeEffect';
 import useDataFecther from '../util/dataFecther';
-
+import {staticFile} from '../axiosUrl'
 
 export function Home ()
 {
     const {loading, error, data} = useDataFecther('/user/profil');
 
+    console.log (data)
     return (
 
         <div className='w-full '>
@@ -14,7 +15,7 @@ export function Home ()
                 <div className="lg:mr-40 lg:pb-28 -mb-10 lg:hidden flex justify-center  ">
                    
                     { !loading && !error ? <div className="flex justify-center items-center">
-                        <img src= {`http://localhost:5000/${data ? data.photo[0].photo : ''}`} className=' h-80 w-60 w- ' alt="avatar"/>
+                        <img src= {`${staticFile}/${data  ? 'data.photo[0].photo' : ''}`} className=' h-80 w-60 w- ' alt="avatar"/>
                     </div> : 
                     !error && loading  ? <div className='w-64 h-64 animate-pulse bg-slate-700 bg-opacity-35 rounded-xl'></div> : <div className='w-64 h-64 border-2 border-gray-300 rounded-xl flex justify-center items-center p-5'> <p>Erreur lors du chargement de l&apos;image</p></div>
                     }
@@ -41,7 +42,7 @@ export function Home ()
                 </div>
 
                 <div className="mr-40 pb-0 hidden lg:block">
-                   {!loading && !error ? <img src= {`http://localhost:5000/${data ? data.photo[0].photo : ''}`} className=' h-3/4 w-96 float-right' alt="avatar"/> : 
+                   {!loading && !error ? <img src= {`${staticFile}/${data && data.lenght !== 0 ? data.photo[0].photo : ''}`} className=' h-3/4 w-96 float-right' alt="avatar"/> : 
                     !error && loading ? <div className='w-64 h-64 animate-pulse  bg-slate-700 bg-opacity-35 rounded-xl'></div> : <div className='w-64 h-64 border-2 border-gray-300 rounded-xl flex justify-center items-center p-5'> <p>Erreur lors du chargement de l&apos;image</p></div>
                    }
                 </div>

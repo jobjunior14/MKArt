@@ -6,3 +6,5 @@ export default axios.create({
         "Content-Type" : "application/json"
     }
 });
+
+export const staticFile = 'http://localhost:5000';
