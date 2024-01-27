@@ -230,13 +230,3 @@ exports.setBgPhoto = catchAssynch (async (req, res, next) => {
         return next (new AppError('Vous devrez mettre une Photo au format PNG', 400));
     } 
 });
-
-exports.getBgPhoto = catchAssynch (async (req, res, next) => {
-
-    const bg = await BgPhoto.find();
-
-    res.status(200).json({
-        status: 'success',
-        data: bg
-    })
-});

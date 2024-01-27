@@ -10,6 +10,7 @@ export default function GalleryOnclick()
     const {id} = useParams();
 
     const {loading, error, data} = useDataFetcher(`/admin/gallery/${id}`);
+    const [deleteError, setDeleteError] = useState (null);
 
      //message to display once delete
      const [message, setMessage] = useState(null);
@@ -20,44 +21,47 @@ export default function GalleryOnclick()
         const fetchProfil = async () => {
  
             try {
-                
+                setDeleteError(false);
                 const data = await axios.delete(`/admin/gallery/${id}`);
-                
+            
                 setMessage(data.data ? 'Photo supprimee avec succes' : 'veillez patienter')
             } catch (err) {
-                if (err.message) {
 
-                    console.log( err.data);
-                } else {
-
-                    console.log (err);
-                }
+                setDeleteError(true);
             }
        };
        fetchProfil();
      }
 
-     return (
-
+     if (error) {
         <div className="p-3 mt-28 justify-center items-center flex flex-col">
-         <h2 className="text-center text-teal-300 font-semibold"> Clicker sur *Choisissez un fichier pour mettre a jour l&apos;image*  </h2>
- 
-             {/* display images and retruning id onclick */}
-            {data === null ? <p>{message === null ? 'Loading...' : message}</p> :
-                <di className = 'justify-center items-center flex'>
-                    <GalleryUser
-                        photo = {[data.photo]}
-                    />
-                </di>
-            }
-
-            <button className="m-5" onClick={deletePicture}> Supprimer La photo</button>
-           
-             {/* to update Image*/}
-             <ImageUploader 
-                 nom = 'photo'
-                 route = {`gallery/${id}`}
-             />
+            <p className="text-center">Une erreur est survenue lors du chargement du fichier</p>
         </div>
-     )
+     } else {
+
+         return (
+    
+            <div className="p-3 mt-28 justify-center items-center flex flex-col">
+             <h2 className="text-center text-teal-300 font-semibold"> Clicker sur *Choisissez un fichier pour mettre a jour l&apos;image*  </h2>
+     
+                 {/* display images and retruning id onclick */}
+                   { data && <div className = 'justify-center items-center flex'>
+                        <GalleryUser
+                            photo = {[data.photo]}
+                        />
+                    </div>}
+                    
+                {message && <p className="text-xl text-center"> {message}</p>}
+                {deleteError && <p className="text-xl text-center">Erreur lors de la supression de la photo</p>}
+                
+                <button className="m-5" onClick={deletePicture}> Supprimer La photo</button>
+               
+                 {/* to update Image*/}
+                 <ImageUploader 
+                     nom = 'photo'
+                     route = {`gallery/${id}`}
+                 />
+            </div>
+         )
+     }
 }

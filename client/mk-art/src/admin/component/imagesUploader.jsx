@@ -15,7 +15,7 @@ export default function ImageUploader (props)
     }
 
     async function onFileUpload () {
-
+        
         const formData = new FormData();
 
         formData.append (
@@ -23,10 +23,10 @@ export default function ImageUploader (props)
             selectedFile,
             selectedFile.name
         );
-
+        
+        console.log ('ey')
         try {
-
-            console.log ('hey')
+            
             setLoading(true);
             // eslint-disable-next-line react/prop-types
             const response = await axios.post(`/admin/${props.route}`, formData, 
@@ -61,7 +61,16 @@ export default function ImageUploader (props)
                     <p> Nom du fichier: <span className='text-teal-400'> {selectedFile.name}</span></p>
                     <button disabled={loading} onClick={onFileUpload} className='mt-3'> {loading ? '...' : 'Telecharger'} </button>
                     <button disabled={loading} onClick={getBack} className='mt-3 mx-2'> Choisisez un autre fichier </button>
-                    </div>) :  (props.route === 'profil' ? <h1 className='text-indigo-600 text-center text-xl'> Profil mis a jour avec succes</h1> : <h1 className='text-indigo-600 text-center text-xl'> Photo mise dans la gallerie avec succes</h1>)}
+                    </div>) :  props.route === 'profil' ? 
+                    <div className=' justify-center items-center flex flex-col'>
+                        <h1 className='text-indigo-600 text-center text-xl'> Profil mis a jour avec succes</h1>
+                        <button disabled={loading} onClick={getBack} className='mt-3 mx-2'> Choisisez un autre fichier </button>
+                    </div>
+                     : 
+                     <div className=' justify-center items-center flex flex-col'>
+                        <h1 className='text-indigo-600 text-center text-xl'> Photo mise dans la gallerie avec succes</h1>
+                        <button disabled={loading} onClick={getBack} className='mt-3 mx-2'> Choisisez un autre fichier </button>
+                     </div>}
                 </div>
             )
         } else {
